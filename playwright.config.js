@@ -6,7 +6,7 @@ const config = {
   timeout: 30 * 1000,
   expect: {
 
-    timeout: 5000
+    timeout: 8000
   },
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -19,8 +19,8 @@ const config = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
 
-    browserName: 'webkit',
-    headless : true
+    browserName: 'chromium',
+    headless : false
 
   },
 };

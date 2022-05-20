@@ -25,7 +25,9 @@ const {test}=require('@playwright/test')
 test.only("Login Functionality",async({page})=>
 
 {
-    await page.screenshot({ path: 'screenshot.png', fullPage: true });
+const productName='adidas original';
+const products =page.locator(".card-body b");
+await page.screenshot({ path: 'screenshot.png', fullPage: true });
 await page.goto('http://rahulshettyacademy.com/client');
 await page.locator("#userEmail").fill("testrajat34@gmail.com")
 await page.locator("#userPassword").fill("Rajat@25");
@@ -33,17 +35,29 @@ await page.locator("#userPassword").fill("Rajat@25");
 await Promise.all(
 [
 
-     page.waitForNavigation(),
-     page.locator("#login").click(),
+    page.waitForNavigation(),
+    page.locator("#login").click(),
 
 
 ]
 )
-await page.waitForLoadState('networkidle');
-const title=await page.locator(".card-body b").allTextContents();
-console.log(title);
+    await page.waitForLoadState('networkidle');
+    const title=await products.allTextContents();
+    console.log(title);
+    const count= await products.count();
+    for(let i=0; i < count ; i++ )
+    {
+       
+    if(await products.nth(i).locator("b").textContent() === productName)
+    {
+        await page.pause();
+        //add to cart
+        await products.nth(i).locator("text = Add To Cart").click();
+        break;
+    }
 
-
-
+    }
+ 
+   // await page.pause();
 
 })

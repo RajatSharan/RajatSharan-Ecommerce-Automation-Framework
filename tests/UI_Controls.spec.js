@@ -1,7 +1,7 @@
-const {test, expect}=require('@playwright/test')
+const {test, expect}= require('@playwright/test')
 
 
-test.only('Handling_Select_DropDown',async({page})=>{
+test('Handling_Select_DropDown',async({page})=>{
 
 
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
@@ -28,22 +28,23 @@ test.only('Handling_Select_DropDown',async({page})=>{
 
 })
 
-// // test("Child Widnow Handling",async({browser,page})=>{
+test.only("Child Widnow Handling",async({browser})=>{
 
+const context= await browser.newContext();
+const page=  await context.newPage()
+await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+const documentLink= page.locator("[href*='documents-request']");
+const [newPage]=await Promise.all([
+ context.waitForEvent('page'),
+ documentLink.click(),
 
-// //     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
-// //    const context= await browser.newContext();
-// //    const page=  await context.newPage()
-// //     const locator=await expect(page.locator('documentLink')).toHaveAttribute('class', 'blinkingText');
-// //    const [NewPage]=await Promise.all(
+ ])
+ const text = await newPage.locator(".red").textContent();
+ const arrayText=text.split("@")
+ const domain =arrayText[1].split(" ")[0]
+ console.log(domain)
+await page.locator('#username').type(domain)
+await page.pause()
+console.log(await page.locator('#username').textContent())
 
-// //     [
-// //         context.waitForEvent('page'),
-// //         locator.click(),
-
-// //     ]
-// //     )
-// //   //
-
-
-// })
+})

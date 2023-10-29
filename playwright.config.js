@@ -3,9 +3,8 @@ const { devices } = require('@playwright/test');
 const config = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+ timeout: 50 * 1000,
   expect: {
-
     timeout: 8000
   },
   /* Fail the build on CI if you accidentally left test.only in the source code. */

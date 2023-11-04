@@ -1,4 +1,4 @@
-const {test, expect}= require('@playwright/test')
+const {test, expect, request}= require('@playwright/test')
 
 
 test('Handling_Select_DropDown',async({page})=>{
@@ -32,6 +32,9 @@ test.only("Child Widnow Handling",async({browser})=>{
 
 const context= await browser.newContext();
 const page=  await context.newPage()
+//page.route('**/*.{jpg,png,jpeg}',route=>route.abort());
+page.on('request',request =>console.log(request.url()))
+page.on('response',response=>console.log(response.url(),response.status()))
 await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
 const documentLink= page.locator("[href*='documents-request']");
 const [newPage]=await Promise.all([

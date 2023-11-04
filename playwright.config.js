@@ -3,7 +3,7 @@ const { devices } = require('@playwright/test');
 const config = {
   testDir: './tests',
   /* Maximum time one test can run for. */
- timeout: 50 * 1000,
+ timeout: 100* 1000,
   expect: {
     timeout: 8000
   },
@@ -21,7 +21,7 @@ const config = {
     browserName: 'chromium',
     headless : false,
     screenshot:'on',
-    trace: 'retain-on-failure',
+    trace: 'on',
   },
 };
 

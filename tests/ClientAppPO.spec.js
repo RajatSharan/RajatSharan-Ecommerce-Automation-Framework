@@ -1,40 +1,24 @@
 const {test,expect}=require('@playwright/test')
+const {LoginPage}=require('../pageobjects/LoginPage')
+//import DashboardPage  from '../pageobjects/DashboardPage'
+const {DashboardPage}=require('../pageobjects/DashboardPage')
+
 
 test.only("Login Functionality",async({page})=>
 
 {
-const email = 'testrajat34@gmail.com'
+const username = 'testrajat34@gmail.com'
+const password = "Rajat@25"
 const productName='adidas original';
 const products =page.locator(".card-body");
-await page.goto('http://rahulshettyacademy.com/client');
-await page.locator("#userEmail").fill("testrajat34@gmail.com")
-await page.locator("#userPassword").fill("Rajat@25");
-//Race condition 
-await Promise.all(
-[
+const loginPage= new LoginPage(page)
+await loginPage.goTo()
+await loginPage.validLogin(username,password)
+const dashboardPage = new DashboardPage(page)
+await dashboardPage.searchProductAddCart(productName)
+await dashboardPage.navigateToCart()
 
-    page.waitForNavigation(),
-    page.locator("#login").click(),
-
-
-]
-)
-    await page.waitForLoadState('networkidle');
-    const title=await products.allTextContents();
-    const count= await products.count();
-    for(let i =0; i < count; ++i )
-    {    
-    if(await products.nth(i).locator("b").textContent() === productName)
-    {
-        //add to cart
-        await products.nth(i).locator("text= Add To Cart").click();
-        break;
-    }
-
-    }
- 
-  await page.locator("[routerlink*='cart']").click()
- await page.locator("div li").first().waitFor();
+await page.locator("div li").first().waitFor();
  const bool= await page.locator("h3:has-text('adidas original')").isVisible()
  expect(bool).toBeTruthy();
  await page.locator('button:has-text("Checkout")').click()
@@ -53,7 +37,7 @@ await Promise.all(
     }
  }
 
- expect(page.locator(".user__name [type='text']").first()).toHaveText(email)
+ expect(page.locator(".user__name [type='text']").first()).toHaveText(username)
  await page.locator(".action__submit").click()
  await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ")
 const orderID= await page.locator(".em-spacer-1 .ng-star-inserted").textContent()

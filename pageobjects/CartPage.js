@@ -26,7 +26,7 @@ class CartPage{
 
     getProductLocator(productName){
 
-        return this.page.locator("h3:has-text('adidas original')")
+        return this.page.locator("h3:has-text('"+productName+"')")
     }
     
 

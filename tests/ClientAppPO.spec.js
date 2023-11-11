@@ -1,4 +1,5 @@
 const {test,expect}=require('@playwright/test')
+const {customtest}=require('./utils/test-base')
 import POManger from '../pageobjects/POManager'
 const dataset=JSON.parse(JSON.stringify(require('./utils/ClientAppPOTestData.json')))
 
@@ -27,3 +28,17 @@ await ordersHistoryPage.searchOrderAndSelect(orderId);
 expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
 });
 }
+customtest.only(`Test data as fixture`,async ({page,testDataForOrder})=>
+{
+const poManager= new POManger(page)
+const products =page.locator(".card-body");
+const loginPage= poManager.getLoginPage()
+await loginPage.goTo()
+await loginPage.validLogin(testDataForOrder.username,testDataForOrder.password)
+const dashboardPage = poManager.getdashboardPage()
+await dashboardPage.searchProductAddCart(testDataForOrder.productName)
+await dashboardPage.navigateToCart()
+const cartPage = poManager.getCartPage();
+await cartPage.VerifyProductDisplayed(testDataForOrder.productName);
+await cartPage.Checkout();
+})

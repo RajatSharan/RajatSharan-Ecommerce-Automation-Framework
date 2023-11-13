@@ -7,7 +7,7 @@
     "test": "npx playwright test tests/WebApiPart1.spec.js --headed",
     "regression" : "npx playwright test",
     "webTests" : "npx playwright test --grep @web",
-    "APITests" : "npx playwright test --grep @@API",
+    "APITests" : "npx playwright test --grep @API",
     "SafariNewConfig" : "npx playwright test --config playwright.config1.js --project=safari"
   },
   "keywords": [],

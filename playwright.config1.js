@@ -2,6 +2,7 @@
 const { devices } = require('@playwright/test');
 const config = {
   testDir: './tests',
+  retries: 2,
   /* Maximum time one test can run for. */
  timeout: 100* 1000,
   expect: {
@@ -15,14 +16,44 @@ const config = {
   //workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
+  projects: [
+ 
+    {
+ 
+      name:'safari',
+      use:{
 
-    browserName: 'chromium',
-    headless : false,
-    screenshot:'on',
-    trace: 'on',
-  },
+        browserName: 'webkit',
+        headless : false,
+        screenshot : 'off',
+        trace : 'on',
+       // ...devices['Nexus 10']
+      }
+    },
+    {
+
+      name:'chrome',
+      use:{
+
+      browserName: 'chromium',
+        headless : false,
+        screenshot : 'on',
+        trace : 'on',
+        ignoreHttpErrors:true,
+      //  viewport:{width:720,height:720},
+        video:'retain-on-failure'
+      }
+
+
+    }
+
+
+
+
+
+  ]
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
 };
 
 module.exports = config;

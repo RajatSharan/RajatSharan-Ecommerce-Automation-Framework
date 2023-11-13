@@ -15,7 +15,7 @@ test.beforeAll( async ()=>{
 
 })
 
-test("Place the order",async({page})=>
+test("@API Place the order",async({page})=>
 {
 
     page.addInitScript(value => {

@@ -1,6 +1,7 @@
 const {test,expect}=require('@playwright/test')
 
-test('Popup validation',async({page})=>{
+test.describe.configure({mode:"parallel"})
+test('Popup validation @web',async({page})=>{
 
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
@@ -23,7 +24,7 @@ test('Popup validation',async({page})=>{
 
 })
 
-test("ScreenShot & VisualCondtion comparision",async ({page})=>{
+test("ScreenShot & VisualCondtion comparision @web",async ({page})=>{
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
     await expect(page.locator("#displayed-text")).toBeVisible();
@@ -36,7 +37,7 @@ test("ScreenShot & VisualCondtion comparision",async ({page})=>{
 
 //Screenshot - store -Screenshot
 
-test.only('Visual Testcase',async({page})=>{
+test('Visual Testcase',async({page})=>{
 
   await page.goto("https://google.com/");
   expect(await page.screenshot()).toMatchSnapshot('landing.png')

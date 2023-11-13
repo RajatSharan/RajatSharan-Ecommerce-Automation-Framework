@@ -25,7 +25,7 @@ test.beforeAll(async({browser})=>{
     
 })
 
-test("Login Functionality",async () =>
+test("@API Login Functionality",async () =>
 {
 const email = 'testrajat34@gmail.com'
 const productName='adidas original';

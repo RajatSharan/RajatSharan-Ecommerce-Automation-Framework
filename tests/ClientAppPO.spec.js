@@ -5,7 +5,7 @@ const dataset=JSON.parse(JSON.stringify(require('./utils/ClientAppPOTestData.jso
 
 for (const data of dataset)
 {
-test(`Login Functionality ${data.productName}`,async ({page})=>
+test(`Login Functionality ${data.productName} @web`,async ({page})=>
 {
 const poManager= new POManger(page)
 const products =page.locator(".card-body");
@@ -28,7 +28,7 @@ await ordersHistoryPage.searchOrderAndSelect(orderId);
 expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
 });
 }
-customtest.only(`Test data as fixture`,async ({page,testDataForOrder})=>
+customtest(`Test data as fixture`,async ({page,testDataForOrder})=>
 {
 const poManager= new POManger(page)
 const products =page.locator(".card-body");

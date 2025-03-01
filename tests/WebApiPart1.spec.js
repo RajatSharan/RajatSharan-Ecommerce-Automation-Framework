@@ -1,4 +1,4 @@
-const {test,expect,request}=require('@playwright/test')
+import { test, expect ,request} from '@playwright/test';
 const loginPayload= {userEmail:"testrajat34@gmail.com",userPassword:"Rajat@25"}
 let response;
 const orderPayload= {orders:[{country:"India",productOrderedId:"6262e990e26b7e1a10e89bfa"}]}

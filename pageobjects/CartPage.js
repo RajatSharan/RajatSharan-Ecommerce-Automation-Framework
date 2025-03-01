@@ -1,4 +1,4 @@
-const {test,expect}=require('@playwright/test')
+import { test, expect } from '@playwright/test';
 class CartPage{
 
 
@@ -14,9 +14,24 @@ class CartPage{
 
    async VerifyProductDisplayed(productName){
 
-        await this.cartProducts.waitFor()
-        const bool =await this.getProductLocator(productName).isVisible();
-        expect(bool).toBeTruthy();
+     // Wait for cart page to load
+     await this.page.waitForNavigation({ waitUntil: "domcontentloaded" });
+
+     // Debugging: Check if correct HTML is loaded
+     const cartHtml = await this.page.innerHTML("body");
+     console.log("Cart Page HTML:", cartHtml);
+ 
+     // Wait for cart items to be visible
+     await this.page.waitForSelector(".cart-item h3", { timeout: 10000 });
+ 
+     // Get all cart item names
+     const cartItems = await this.page.locator(".cart-item h3").allTextContents();
+     console.log("Cart contains:", cartItems);
+ 
+     // Validate the product name
+     await expect(this.page.locator(".cart-item h3")).toContainText(productName, { ignoreCase: true });
+ 
+  
     }
 
     async Checkout(){
@@ -34,3 +49,4 @@ class CartPage{
 
 }
 export default CartPage;
+//module.exports= {CartPage}

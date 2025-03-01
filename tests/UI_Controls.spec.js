@@ -1,5 +1,4 @@
-const {test, expect, request}= require('@playwright/test')
-
+import { test, expect,request } from '@playwright/test';
 
 test('Handling_Select_DropDown',async({page})=>{
 

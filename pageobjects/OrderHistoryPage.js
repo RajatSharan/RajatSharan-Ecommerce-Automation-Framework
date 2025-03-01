@@ -29,4 +29,5 @@ async getOrderId()
 }
 
 }
+//module.exports= {OrdersHistoryPage}
 export default OrdersHistoryPage;

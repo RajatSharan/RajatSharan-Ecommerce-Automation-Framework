@@ -1,4 +1,4 @@
-const { expect } = require("@playwright/test");
+import { test, expect } from '@playwright/test';
 
 class OrdersReviewPage
 {
@@ -43,5 +43,6 @@ async SubmitAndGetOrderId()
  return await this.orderId.textContent();
 }
 }
+//module.exports= {OrdersReviewPage}
 export default OrdersReviewPage;
    

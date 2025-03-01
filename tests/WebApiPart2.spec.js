@@ -1,5 +1,5 @@
 
-const {test,expect}=require('@playwright/test')
+import { test, expect } from '@playwright/test';
 let webContext;
 
 test.beforeAll(async({browser})=>{

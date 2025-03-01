@@ -41,3 +41,4 @@ constructor(page){
     
 }
 export default DashboardPage
+//module.exports= {DashboardPage}

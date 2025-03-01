@@ -1,9 +1,9 @@
 // @ts-check
-const { devices } = require('@playwright/test');
+import { devices } from '@playwright/test';
 const config = {
   testDir: './tests',
   /* Maximum time one test can run for. */
- timeout: 100* 1000,
+  timeout: 100 * 1000,
   expect: {
     timeout: 8000
   },
@@ -25,4 +25,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;

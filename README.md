@@ -1,60 +1,106 @@
-**Playwright Automation with JavaScript (POM Approach)**
-This repository contains a robust test automation framework built using Playwright and JavaScript, leveraging the Page Object Model (POM) design pattern for scalability and maintainability.
+# Playwright Automation Framework (POM-based)
 
-**Project Overview**
-The purpose of this project is to:
+This repository contains an end-to-end Playwright automation framework built using the **Page Object Model (POM)** design pattern. It supports web UI and API testing, multi-browser execution, Excel data integration, and generates rich HTML and Allure reports.
 
-**Automate end-to-end testing of web applications.**
-Ensure maintainable and reusable test scripts using the POM design pattern.
-Enable seamless integration with CI/CD pipelines for continuous testing.
-**Key Features**
-Playwright Framework:
+---
 
-Supports cross-browser testing on Chromium, Firefox, and WebKit.
-Provides built-in test runner for efficient test execution.
-Page Object Model (POM):
+## 📂 Folder Structure
 
-Modular design for test scripts, enhancing maintainability.
-Separation of test logic from UI interactions.
-Test Reporting and Debugging:
+```
+/project-root
+│
+├── tests/                  # Playwright test specs (.spec.js)
+├── pages/                  # Page Object classes (locators & actions)
+├── utils/                  # Utility scripts (helpers, API handlers)
+├── config/                 # Playwright configuration files
+│    ├── playwright.config.js          # Default config (Chromium)
+│    └── playwright.config1.js         # Multi-browser config (Safari, Chrome)
+│
+├── reports/                # HTML and Allure reports
+├── test-data/              # Excel, JSON test data files
+│
+├── package.json            # Project scripts and dependencies
+├── package-lock.json       # Dependency lock file
+├── .gitignore              # Git ignore setup
+├── state.json              # Browser auth session (e.g., localStorage)
+└── README.md               # This documentation
+```
 
-Integrated with Playwright’s reporting tools for detailed test reports.
-Screenshot and video recording on test failures for debugging.
-Continuous Integration:
+---
 
-Configured for GitHub Actions/CircleCI to run tests on every commit.
-Playwright Automation with JavaScript (POM Approach)
-This repository contains a robust test automation framework built using Playwright and JavaScript, leveraging the Page Object Model (POM) design pattern for scalability and maintainability.
+## 🚀 Features
 
-Project Overview
-The purpose of this project is to:
+✅ **Page Object Model (POM)** for maintainable, reusable test code
+✅ **Multi-browser testing**: Chromium, WebKit (Safari), Chrome
+✅ **Tagged test runs** using `@web` and `@API`
+✅ **Excel data integration** with `exceljs`
+✅ **Rich reports**: Playwright HTML reports + Allure
+✅ **Video recording & screenshots** on failure
+✅ **Trace capture** for easy debugging
+✅ **Stored browser state** (via `state.json`) for authenticated sessions
 
-Automate end-to-end testing of web applications.
-Ensure maintainable and reusable test scripts using the POM design pattern.
-Enable seamless integration with CI/CD pipelines for continuous testing.
-Key Features
-**Playwright Framework:**
+---
 
-Supports cross-browser testing on Chromium, Firefox, and WebKit.
-Provides built-in test runner for efficient test execution.
-**Page Object Model (POM):**
+## 🔧 Scripts
 
-Modular design for test scripts, enhancing maintainability.
-Separation of test logic from UI interactions.
-**Test Reporting and Debugging:**
-Integrated with Playwright’s reporting tools for detailed test reports.
-Screenshot and video recording on test failures for debugging.
-**Continuous Integration:**
-Configured for GitHub Actions/CircleCI to run tests on every commit.
-**Project Structure**
-Directory/File	Description
-/pages	Contains Page Object Model files for application pages.
-/tests	Test scripts using POM to validate application workflows.
-/utils	Utility files for common functions (e.g., data handling, custom commands).
-/playwright.config.js	Playwright configuration file for test execution setup.
-/report	Generated test reports after execution.
-README.md	Project overview and usage instructions.
+| Script Name       | Command                                                               |
+| ----------------- | --------------------------------------------------------------------- |
+| `test`            | `npx playwright test tests/WebApiPart1.spec.js --headed`              |
+| `regression`      | `npx playwright test`                                                 |
+| `webTests`        | `npx playwright test --grep @web`                                     |
+| `APITests`        | `npx playwright test --grep @API`                                     |
+| `SafariNewConfig` | `npx playwright test --config playwright.config1.js --project=safari` |
 
-<img width="566" alt="image" src="https://github.com/user-attachments/assets/5e8c81c5-49b5-4284-bf23-734d0edb2e4c" />
+Run any script using `npm run <scriptName>`.
 
+---
 
+## 🌐 Application Under Test (AUT)
+
+Currently targeting:
+`https://rahulshettyacademy.com/AutomationPractice/`
+
+Test coverage includes:
+
+* Radio buttons, checkboxes, dropdowns
+* Window and tab switching
+* Alerts and confirmation dialogs
+* Web tables, dynamic elements
+
+---
+
+## 📷 Reports & Artifacts
+
+* **HTML Report**: Automatically generated with Playwright (`reporter: 'html'`)
+* **Allure Report**: Integrated with `allure-playwright`
+* **Screenshots**: Captured on failures
+* **Videos**: Retained on failure (Chrome config)
+* **Traces**: Collected for detailed debugging
+
+---
+
+## 🛠 Requirements
+
+* Node.js >= 18.x
+* Playwright >= 1.50.x
+* Install dependencies: `npm install`
+
+---
+
+## 🏗 Visual Framework Flow Diagram
+
+```
+User → Test Runner (npx playwright test) → Playwright Config → Pages (POM) → Tests → Reports/Artifacts
+```
+
+Or as a diagram:
+
+```
++--------+        +-------------------+        +-------------+        +------------------+        +----------------+
+|  User  +-------> Playwright Scripts +-------> Page Objects +-------> Browser Execution +-------> Reports/Results |
++--------+        +-------------------+        +-------------+        +------------------+        +----------------+
+```
+
+---
+
+If you want, I can also generate this as an image or provide a Mermaid.js diagram for visual embedding!

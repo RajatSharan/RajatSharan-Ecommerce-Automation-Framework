@@ -40,6 +40,6 @@ test("ScreenShot & VisualCondtion comparision @web",async ({page})=>{
 test('Visual Testcase',async({page})=>{
 
   await page.goto("https://google.com/");
-  expect(await page.screenshot()).toMatchSnapshot('landing.png')
+  expect(await page.screenshot()).toMatchSnapshot('landing.png');             
 
 })

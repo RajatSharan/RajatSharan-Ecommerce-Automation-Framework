@@ -4,7 +4,7 @@ test.only("Login Functionality",async({page})=>
 
 {
 const email = 'testrajat34@gmail.com'
-const productName='adidas original';
+const productName="ADIDAS ORIGINAL";
 const products =page.locator(".card-body");
 await page.goto('http://rahulshettyacademy.com/client');
 await page.locator("#userEmail").fill("testrajat34@gmail.com")
@@ -34,7 +34,8 @@ await Promise.all(
     }
  
   await page.locator("[routerlink*='cart']").click()
- await page.locator("div li").first().waitFor();
+  await page.waitForLoadState('networkidle');
+    await page.locator("div li").first().waitFor();
  const bool= await page.locator("h3:has-text('adidas original')").isVisible()
  expect(bool).toBeTruthy();
  await page.locator('button:has-text("Checkout")').click()

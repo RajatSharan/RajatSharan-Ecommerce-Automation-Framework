@@ -9,10 +9,15 @@ The **Ecommerce Automation Framework** is a Playwright-based test automation set
 ## ✨ Features
 
 ✅ **End-to-End Tests**: Automates user workflows like login, adding products to the cart, and placing orders.
+
 ✅ **API Tests**: Validates backend APIs for login, order creation, and more.
+
 ✅ **Validation Tests**: Ensures proper error handling and UI validations.
+
 ✅ **Data-Driven Testing**: Supports running tests with multiple datasets.
+
 ✅ **Reusable Page Objects**: Implements the Page Object Model (POM) for better maintainability.
+
 ✅ **Mocking and Interception**: Mocks API responses for testing edge cases.
 
 ---

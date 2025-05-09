@@ -25,30 +25,53 @@ The **Ecommerce Automation Framework** is a Playwright-based test automation set
 ## 📂 Folder Structure
 
 ```
-/project-root
-│
-├── pageobjects/
-│    ├── login.page.js
-│    ├── dashboard.page.js
-│    ├── cart.page.js
-│    ├── order_review.page.js
-│    └── POManager.js
-│
-├── tests/
-│    ├── e2e_tests/
-│    │    ├── client_app_order_workflow.spec.js
-│    │    └── practice_website.spec.js
-│    └── api_tests/
-│         ├── api_login.spec.js
-│         ├── api_order_creation.spec.js
-│         └── order_interception.spec.js
-│
-├── utils/
-│    ├── api_utils.js
-│    └── client_app_test_data.json
-│
+Ecommerce Automation Framework/
+├── .gitignore
+├── exceldownload.xlsx
 ├── package.json
-└── playwright.config.js
+├── .github/
+│   └── workflows/
+│       └── ...
+├── config/
+│   ├── playwright.config.js
+│   ├── playwright.config1.js
+├── features/
+│   ├── Ecommerce.feature
+│   └── step_defination/
+│       └── steps.js
+├── pageobjects/
+│   ├── cart.page.js
+│   ├── dashboard.page.js
+│   ├── login.page.js
+│   ├── order_history.page.js
+│   ├── order_review.page.js
+│   └── po_manager.js
+├── playwright-report/
+│   ├── index.html
+│   ├── data/
+│   └── trace/
+├── screenshots/
+│   ├── partialScreenshot.png
+│   ├── screenshot.png
+│   └── screensnot.png
+├── state/
+│   └── state.json
+├── test-results/
+│   └── .last-run.json
+├── tests/
+│   ├── api/
+│   │   ├── api_login.spec.js
+│   │   └── order_interception.spec.js
+│   ├── e2e/
+│   │   ├── client_app_data_driven.spec.js
+│   │   ├── dropdown_and_child_window.spec.js
+│   │   └── practice_website.spec.js
+│   ├── utils/
+│   │   ├── api_utils.js
+│   │   └── client_app_test_data.json
+│   └── validations/
+│       ├── login_error_validation.spec.js
+│       └── additional_validations.spec.js
 ```
 
 ---

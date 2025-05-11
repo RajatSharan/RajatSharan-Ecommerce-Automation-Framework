@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"4e85ea89995c8c70558964bedf1b1e4e","name":"tests\\e2e\\end_to_end_order_flow.spec.js","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"ee0b27dbe4d4f6da690e1d048318bd90","name":"tests\\e2e\\dropdown_and_child_window.spec.js","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

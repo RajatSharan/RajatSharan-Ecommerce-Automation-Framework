@@ -14,7 +14,11 @@ const config = {
   /* Opt out of parallel tests on CI. */
   //workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+
+    ['list'], // Default reporter
+    ['allure-playwright'], // Add Allure reporter
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
 
@@ -23,6 +27,20 @@ const config = {
     screenshot:'on',
     trace: 'on',
   },
+  projects: [
+    {
+      name: 'Chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'Firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'WebKit',
+      use: { ...devices['Desktop Safari'] },
+    },
+  ],
 };
 
 export default config;
